@@ -27,16 +27,16 @@ This project utilizes a Large Language Model (LLM) to generate a tailored email 
 **Installation**
 ------------
 
-1. Clone the repository: `git clone https://github.com/your-username/llm-llam-project.git`
+1. Clone the repository: `git clone https://github.com/oigwebuike/llama-groqcloud.git`
 2. Install the required libraries: `pip install -r requirements.txt`
-3. Download the pre-trained LLM model: `python download_model.py`
+3. For this project groqcloud was used as the llm model source, so you do not need to download any models, however, you need to get an API key for groqcloud
 
 **Usage**
 -----
 
-1. Run the script: `python generate_email.py`
+1. Run the script: `python .\app\main.py`
 2. Input the job page URL: `Enter the job page URL: https://example.com/job-page`
-3. Input your information (optional): `Enter your name: John Doe`, `Enter your email address: johndoe@example.com`, `Enter your LinkedIn profile (optional): https://linkedin.com/in/johndoe`
+3. Input your information as required: `Enter your name (Reqquired): John Doe`, `Enter your LinkedIn profile (optional): https://linkedin.com/in/johndoe`
 4. Review and customize the generated email (optional)
 
 **Example Use Case**

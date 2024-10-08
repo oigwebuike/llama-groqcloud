@@ -5,8 +5,6 @@ from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.exceptions import OutputParserException
 import os
 from dotenv import load_dotenv
-import chromadb
-
 
 
 load_dotenv()
@@ -55,7 +53,7 @@ class Chain:
     
     
     # def write_email(self, job, links):
-    def write_email(self, job):
+    def write_email(self, name, self_desc, coy, linkedin, current_role, job):
         
         email_prompt = PromptTemplate.from_template(
             """
@@ -63,7 +61,9 @@ class Chain:
             {job_description}
 
             ### INSTRUCTION:
-            You are Onyeka, a Machine Learning Engineer at Invia Travels GmbH. Invia is a travel company and I worked in the Review Funnel as a Data Scientist. I worked earlier with the Retention Funnel as a Golang Backend    Developer, and then as a Data Scientist with the Funnel Review. Your job is to write a cold email to the company regarding the job in the description mentioned above in fulfiling the roles described.
+            You are {name}, a {current_role} at {coy}. 
+            {self_short_description}
+            My LinkedIn account is available at {linkedin}
             Do not provide a preamble.
             ###EMAIL (NO PREAMBLE):
             
@@ -78,7 +78,7 @@ class Chain:
         # return json_res if isinstance(json_res, list) else [json_res]
        
         chain_email = email_prompt | self.llm     
-        email_response = chain_email.invoke({"job_description": str(job)})
+        email_response = chain_email.invoke({"job_description": str(job), "name": name, "self_short_description": self_desc, "current_role": current_role, "coy": coy, "linkedin": linkedin})
         return email_response.content
                 
                 
